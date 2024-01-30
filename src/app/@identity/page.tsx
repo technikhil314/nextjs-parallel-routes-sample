@@ -1,14 +1,21 @@
 import { getLoggedInCookie } from '@/utils/cookie';
 import { revalidatePath } from 'next/cache';
-import { cookies } from 'next/headers'
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
+function sleep(seconds: number) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, seconds * 1000)
+    })
+}
+
 async function login(formData: FormData) {
     "use server";
     const loginUsing = (formData.get("loginUsing") || "") as string;
+    await sleep(8)
     cookies().set({
         name: "isLoggedIn",
         value: JSON.stringify({
@@ -17,10 +24,11 @@ async function login(formData: FormData) {
         }),
         secure: true,
         httpOnly: true,
-        domain: ".vercel.app"
+        domain: ".vercel.app",
+        maxAge: 31535999
     });
     revalidatePath("/")
-    redirect("/")
+    redirect(`/?demo=${Date.now()}`)
 }
 
 
