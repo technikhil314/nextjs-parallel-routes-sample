@@ -9,10 +9,16 @@ export const revalidate = 0;
 async function login(formData: FormData) {
     "use server";
     const loginUsing = (formData.get("loginUsing") || "") as string;
-    cookies().set("isLoggedIn", JSON.stringify({
-        state: true,
-        loginUsing
-    }));
+    cookies().set({
+        name: "isLoggedIn",
+        value: JSON.stringify({
+            state: true,
+            loginUsing
+        }),
+        secure: true,
+        httpOnly: true,
+        domain: ".vercel.app"
+    });
     revalidatePath("/")
     redirect("/")
 }
