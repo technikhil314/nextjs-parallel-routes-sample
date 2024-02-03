@@ -11,11 +11,11 @@ export default function page() {
     return <form action={redirectToRoute1} className="prose dark:text-gray-200 text-gray-800">
         <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Redirect me to /route1</button>
         <ul>
-            <strong>Expected Result</strong>
+            <strong className="dark:text-gray-200 text-gray-800">Expected Result</strong>
             <li>After sucessful redirection with streaming both cookies should be dropped on browser</li>
         </ul>
         <ul>
-            <strong>Actual Result</strong>
+            <strong className="dark:text-gray-200 text-gray-800">Actual Result</strong>
             <li>Only one of the cookie gets dropped on browser based on following logic</li>
             <ul>
                 <li>
@@ -42,7 +42,7 @@ export default function page() {
             </ul>
         </ul>
         <ul>
-            <strong>Potential fix</strong>
+            <strong className="dark:text-gray-200 text-gray-800">Potential fix</strong>
             <li>
                 <a className="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://github.com/vercel/next.js/blob/canary/packages/next/src/server/app-render/action-handler.ts#L227">
                     This {" "}
