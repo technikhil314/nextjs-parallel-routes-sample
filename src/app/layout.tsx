@@ -11,18 +11,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  ...props
 }: {
   children: React.ReactNode
-  checkout: React.ReactNode
-  identity: React.ReactNode
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
         <main className='w-full md:w-3/4 lg:w-1/2 mx-auto grid min-h-screen items-center'>
-          {props.checkout}
-          {props.identity}
+          {children}
         </main>
       </body>
     </html>
